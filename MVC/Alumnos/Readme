@@ -1,9 +1,0 @@
-Ejercicio
-  Sincronizarse o Clonarse el repositorio PW2013
-  Ir a la carpeta Clases/T09 MVC
-  Crear una carpeta con su nombre y apellido (dentro de Alumnos)
-  Copiar lo contenido en la carpeta ejercicio
-  En su MySql local ejecuten el script que esta dentro de la carpeta database.
-  Modificar la solución para que utilice el patrón MVC.
-  Recuerde que tanto el index.php como el getdata.php tienen que usar el patrón.
-  Subir el ejercicio al repositorio.
