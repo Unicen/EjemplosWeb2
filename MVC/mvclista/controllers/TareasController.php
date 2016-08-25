@@ -18,6 +18,17 @@ class TareasController
     $this->vista->mostrar($tareas);
   }
 
+  function guardar(){
+    $tarea = $_POST['tarea'];
+    $this->modelo->crearTarea($tarea);
+    $this->iniciar();
+  }
+
+  function eliminar(){
+    $key = $_GET['index_tarea'];
+    $this->modelo->eliminarTarea($key);
+    $this->iniciar();
+  }
 
 
 }
