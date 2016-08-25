@@ -20,7 +20,9 @@ class TareasController
 
   function guardar(){
     $tarea = $_POST['tarea'];
-    $this->modelo->crearTarea($tarea);
+    if(!$this->filtro($tarea)){
+      $this->modelo->crearTarea($tarea);
+    }
     $this->iniciar();
   }
 
@@ -28,6 +30,10 @@ class TareasController
     $key = $_GET['index_tarea'];
     $this->modelo->eliminarTarea($key);
     $this->iniciar();
+  }
+
+  function filtro($tarea){
+    return preg_match('/podria/',$tarea);
   }
 
 
