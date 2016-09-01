@@ -27,8 +27,14 @@ class TareasController
   }
 
   function eliminar(){
-    $key = $_GET['index_tarea'];
+    $key = $_GET['id_tarea'];
     $this->modelo->eliminarTarea($key);
+    $this->iniciar();
+  }
+
+  function realizar(){
+    $key = $_GET['id_tarea'];
+    $this->modelo->toogleTarea($key);
     $this->iniciar();
   }
 

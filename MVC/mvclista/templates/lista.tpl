@@ -14,7 +14,15 @@
 
     <ul>
       {foreach from=$tareas key=index item=tarea}
-      <li>{$tarea}<a href="index.php?action=eliminar_tarea&index_tarea={$index}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>
+      <li>
+        {if $tarea['finalizada']}
+          <s>{$tarea['nombre']}</s>
+        {else}
+          {$tarea['nombre']}
+        {/if}
+          <a href="index.php?action=eliminar_tarea&id_tarea={$tarea['id_tarea']}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+          <a href="index.php?action=realizar_tarea&id_tarea={$tarea['id_tarea']}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+      </li>
       {/foreach}
     </ul>
   </body>
