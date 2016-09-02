@@ -23,13 +23,15 @@ class TareasController
     if(!$this->filtro($tarea)){
       $this->modelo->crearTarea($tarea);
     }
-    $this->iniciar();
+    $tareas = $this->modelo->getTareas();
+    $this->vista->getLista($tareas);
   }
 
   function eliminar(){
     $key = $_GET['id_tarea'];
     $this->modelo->eliminarTarea($key);
-    $this->iniciar();
+    $tareas = $this->modelo->getTareas();
+    $this->vista->getLista($tareas);
   }
 
   function realizar(){
