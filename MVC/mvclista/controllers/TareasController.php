@@ -18,13 +18,39 @@ class TareasController
     $this->vista->mostrar($tareas);
   }
 
+  function getImagenesVerificadas($imagenes){
+    $imagenesVerificadas = [];
+    for ($i=0; $i < count($imagenes['size']); $i++) {
+      if($imagenes['size'][$i]>0 && $imagenes['type'][$i]=="image/jpeg"){
+          $imagen_aux = [];
+          $imagen_aux['tmp_name']=$imagenes['tmp_name'][$i];
+          $imagen_aux['name']=$imagenes['name'][$i];
+          $imagenesVerificadas[]=$imagen_aux;
+      }
+    }
+
+    return $imagenesVerificadas;
+  }
+
   function guardar(){
     $tarea = $_POST['tarea'];
-    if(!$this->filtro($tarea)){
-      $this->modelo->crearTarea($tarea);
+    if(isset($_FILES['imagenes'])){
+      $imagenesVerificadas = $this->getImagenesVerificadas($_FILES['imagenes']);
+      if(count($imagenesVerificadas)>0){
+        if(!$this->filtro($tarea)){
+          $this->modelo->crearTarea($tarea,$imagenesVerificadas);
+          $this->vista->mostrarMensaje("La tarea se creo con imagen y todo!", "success");
+        }
+      }
+      else{
+        $this->vista->mostrarMensaje("Error con las imagenes", "danger");
+      }
     }
-    $tareas = $this->modelo->getTareas();
-    $this->vista->getLista($tareas);
+    else{
+        $this->vista->mostrarMensaje("La imagen es requerida","danger");
+    }
+
+    $this->iniciar();
   }
 
   function eliminar(){

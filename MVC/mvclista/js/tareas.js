@@ -1,12 +1,12 @@
 $(document).ready(function(){
 
-$('#agregarTareaBtn').click(function(){
-  event.preventDefault();
-  $.post( "index.php?action=guardar_tarea",$("#formTarea").serialize(), function(data) {
-    $('#listaTareas').html(data);
-    $('#tarea').val('');
-});
-});
+// $('#agregarTareaBtn').click(function(){
+//   event.preventDefault();
+//   $.post( "index.php?action=guardar_tarea",$("#formTarea").serialize(), function(data) {
+//     $('#listaTareas').html(data);
+//     $('#tarea').val('');
+// });
+// });
 
 $('.eliminarTareas').click(function(){
 event.preventDefault();

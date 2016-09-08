@@ -6,9 +6,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
+
+
+
+    {if isset($mensaje)}
+      <div class="alert alert-{$tipoMensaje}" role="alert">{$mensaje}</div>
+    {/if}
+
     <h1>Lista de Tareas</h1>
-    <form id="formTarea" action="index.php?action=guardar_tarea" method="post">
+    <form id="formTarea" action="index.php?action=guardar_tarea" method="post" enctype="multipart/form-data">
       <input type="text" name="tarea"  required value="" placeholder="Ingrese su Tarea">
+      <input type="file" name="imagenes[]" required value="" multiple>
       <input type="submit" name="Agregar" id="agregarTareaBtn">
     </form>
     <div id="listaTareas">
