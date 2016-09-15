@@ -1,7 +1,6 @@
 <?php
 require('controllers/TareasController.php');
 require ('config/ConfigApp.php');
-
 $controller = new TareasController();
 
 if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){

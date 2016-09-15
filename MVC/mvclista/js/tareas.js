@@ -1,3 +1,13 @@
+function eliminarTareas(){
+  $('.eliminarTareas').click(function(){
+  event.preventDefault();
+  $.get( "eliminar_tarea",{ id_tarea: $(this).attr("data-idtarea") }, function(data) {
+    $('#listaTareas').html(data);
+    $('#tarea').val('');
+    eliminarTareas();
+  });
+  });
+}
 $(document).ready(function(){
 
 // $('#agregarTareaBtn').click(function(){
@@ -8,12 +18,7 @@ $(document).ready(function(){
 // });
 // });
 
-$('.eliminarTareas').click(function(){
-event.preventDefault();
-$.get( "index.php?action=eliminar_tarea",{ id_tarea: $(this).attr("data-idtarea") }, function(data) {
-  $('#listaTareas').html(data);
-  $('#tarea').val('');
-});
+eliminarTareas();
 
-});
+
 });
