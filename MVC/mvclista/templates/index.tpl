@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <base href="//localhost/EjemplosWeb2/MVC/mvclista/" />
     <meta charset="utf-8">
     <title>Lista de Tareas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -14,7 +15,7 @@
     {/if}
 
     <h1>Lista de Tareas</h1>
-    <form id="formTarea" action="index.php?action=guardar_tarea" method="post" enctype="multipart/form-data">
+    <form id="formTarea" action="guardar_tarea" method="post" enctype="multipart/form-data">
       <input type="text" name="tarea"  required value="" placeholder="Ingrese su Tarea">
       <input type="file" name="imagenes[]" required value="" multiple>
       <input type="submit" name="Agregar" id="agregarTareaBtn">
