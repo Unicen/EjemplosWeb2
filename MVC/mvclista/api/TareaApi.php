@@ -13,18 +13,36 @@ class TareaApi extends Api
   }
 
   protected function tarea($argumentos){
-   if($this->method == 'GET' && count($argumentos)==0){
-     return $this->model->getTareas();
-   }
-   else{
-     if($this->method == 'GET' && count($argumentos)>0){
-       return $this->model->getTarea($argumentos[0]);
-     }
-    else{
-      return "Only accepts GET";
+    switch ($this->method) {
+      case 'GET':
+          if(count($argumentos)>0){
+            $tarea = $this->model->getTarea($argumentos[0]);
+            $error['Error'] = "La tarea no existe";
+            return ($tarea) ? $tarea : $error;
+          }else{
+            return $this->model->getTareas();
+          }
+        break;
+      case 'DELETE':
+          if(count($argumentos)>0){
+            $error['Error'] = "La tarea no existe";
+            $success['Success'] = "La tarea se borro";
+            $filasAfectadas = $this->model->eliminarTarea($argumentos[0]);
+            return ($filasAfectadas == 1) ? $success : $error;
+          }
+        break;
+        case 'POST':
+            if(count($argumentos)==0){
+              $error['Error'] = "La tarea no se creo";
+              $id_tarea = $this->model->crearTarea($_POST['tarea'],[]);
+              return ($id_tarea > 0) ? $this->model->getTarea($id_tarea) : $error;
+            }
+          break;
+      default:
+           return "Only accepts GET";
+        break;
     }
    }
- }
 
 
 

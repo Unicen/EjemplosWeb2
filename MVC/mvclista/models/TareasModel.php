@@ -41,6 +41,7 @@ class TareasModel
       $insertImagen = $this->db->prepare("INSERT INTO imagen(path,fk_id_tarea) VALUES(?,?)");
       $insertImagen->execute(array($path,$id_tarea));
     }
+    return $id_tarea;
     //$this->tareas[] = $tarea;
   }
 
@@ -52,6 +53,8 @@ class TareasModel
     //unset($this->tareas[$id_tarea]);
     $sentencia = $this->db->prepare("delete from tarea where id_tarea=?");
     $sentencia->execute(array($id_tarea));
+    return $sentencia->rowCount();
+
   }
 
     function toogleTarea($id_tarea){
