@@ -7,12 +7,14 @@ abstract class Api{
   function __construct($request){
     header("Content-Type: application/json");
     $this->args = explode('/', $request);
+    //array_shift remueve el primer elemento ("tarea") y lo retorna (con eso elige que metodo llamar)
     $this->endpoint = array_shift($this->args);
     $this->method = $_SERVER['REQUEST_METHOD'];
   }
 
   public function processAPI() {
      if (method_exists($this, $this->endpoint)) {
+       //llama al metodo que se llama como dice "endpoint" (similar a un switch)
         $retorno = $this->{$this->endpoint}($this->args);
        return $this->_response($retorno);
      }
