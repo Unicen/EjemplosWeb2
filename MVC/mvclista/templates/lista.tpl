@@ -1,4 +1,4 @@
-<ul>
+<ul id="listaTareas">
   {foreach from=$tareas key=index item=tarea}
   <li>
     {if $tarea['finalizada']}
