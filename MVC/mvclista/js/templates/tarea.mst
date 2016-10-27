@@ -1,11 +1,17 @@
 <li>
-  {{#finalizada}}
-    <s>
-  {{/finalizada}}
-    {{nombre}}
-  {{#finalizada}}
-    </s>
-  {{/finalizada}}
-    <a class="eliminarTareas" href="#" data-idtarea="{{id_tarea}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-    <a href="realizar_tarea/{{id_tarea}}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+{{titulo}}
 </li>
+
+{{#paquete}}
+  <li>
+    {{#finalizada}}
+      <s>
+    {{/finalizada}}
+      {{nombre}}
+    {{#finalizada}}
+      </s>
+    {{/finalizada}}
+      <a class="eliminarTareas" href="#" data-idtarea="{{id_tarea}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      <a href="realizar_tarea/{{id_tarea}}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+  </li>
+{{/paquete}}

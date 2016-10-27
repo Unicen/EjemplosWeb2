@@ -1,12 +1,10 @@
 $(document).ready(function(){
-  function createTarea(tarea){
-
-       if(tarea.finalizada == 0)
-           tarea.finalizada = false;
-       else
-         tarea.finalizada = true;
-       var rendered = Mustache.render(template,tarea);
-       $('#listaTareas').append(rendered);
+  function createTareas(tareas){
+      for (var i = 0; i < tareas.length; i++) {
+        tareas[i].finalizada = tareas[i].finalizada ==0 ? false: true;
+      }
+       var rendered = Mustache.render(template,{titulo : "Tarea Extra", paquete:tareas});
+       $('#listaTareas').html(rendered);
 
   }
   var template;
@@ -23,14 +21,7 @@ $('#refresh').click(function(event){
       method:"GET",
       dataType: "JSON",
       url: "api/tarea",
-      success: function(receivedData){
-        $("#listaTareas").html("");
-        var html = "";
-        for (var i = 0; i < receivedData.length; i++) {
-          html += createTarea(receivedData[i]);
-        }
-        html += "";
-      }
+      success: createTareas
     }
   )
 });
