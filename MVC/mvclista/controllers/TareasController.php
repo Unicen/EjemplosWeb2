@@ -1,16 +1,18 @@
 <?php
-require('views/TareasView.php');
-require('models/TareasModel.php');
+require_once('views/TareasView.php');
+require_once('models/TareasModel.php');
+require_once('controllers/LoginController.php');
 
 class TareasController
 {
   private $vista;
   private $modelo;
 
-  function __construct()
+  function __construct($loginController)
   {
     $this->modelo = new TareasModel();
     $this->vista = new TareasView();
+    $loginController->checkLogin();
   }
 
   function iniciar(){

@@ -1,5 +1,5 @@
 <?php
-require('libs/Smarty.class.php');
+require_once('libs/Smarty.class.php');
 
 class TareasView
 {

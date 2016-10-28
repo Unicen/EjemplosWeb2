@@ -1,11 +1,13 @@
 <?php
-require('controllers/TareasController.php');
-require ('config/ConfigApp.php');
+require_once('controllers/TareasController.php');
+require_once('controllers/LoginController.php');
+require_once('config/ConfigApp.php');
 
-$controller = new TareasController();
+$loginController = new LoginController();
+$controller = new TareasController($loginController);
 
 if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){
-  $controller->iniciar();
+  (new LoginController())->login();
   die();
 }
 
@@ -21,6 +23,9 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
     break;
   case ConfigApp::$ACTION_REALIZAR_TAREA:
     $controller->realizar();
+    break;
+  case ConfigApp::$ACTION_LOGIN:
+    $loginController->login();
     break;
   default:
     $controller->iniciar();
