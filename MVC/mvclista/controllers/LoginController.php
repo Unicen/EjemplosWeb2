@@ -28,6 +28,7 @@ class LoginController
       //TODO: falta controlar el caso de que el usuario no exista
       if(password_verify($pass, $hash))
       {
+        session_start();
         $_SESSION['USER'] = $user;
         header("Location: mostrar_tareas");
         die();
