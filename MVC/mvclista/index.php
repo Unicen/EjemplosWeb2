@@ -30,6 +30,9 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_LOGIN:
     $loginController->login();
     break;
+  case ConfigApp::$ACTION_LOGOUT:
+    $loginController->logout();
+    break;
   default:
     $controller = new TareasController($loginController);
     $controller->iniciar();

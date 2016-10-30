@@ -15,7 +15,7 @@
     {/if}
 
     <h1>Lista de Tareas</h1>
-
+    <a href="logout">Salir!</a>
     <form id="formTarea" action="guardar_tarea" method="post" enctype="multipart/form-data">
       <input type="text" name="tarea"  required value="" placeholder="Ingrese su Tarea">
       <input type="file" name="imagenes[]" required value="" multiple>

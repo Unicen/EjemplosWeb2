@@ -6,6 +6,7 @@ class ConfigApp{
   public static $ACTION_ELIMINAR_TAREA = 'eliminar_tarea';
   public static $ACTION_REALIZAR_TAREA = 'realizar_tarea';
   public static $ACTION_LOGIN = 'login';
+  public static $ACTION_LOGOUT = 'logout';
 }
 
  ?>
