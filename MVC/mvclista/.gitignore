@@ -1,3 +1,4 @@
 templates_c
 test
 images
+libs/phpmailer/*
