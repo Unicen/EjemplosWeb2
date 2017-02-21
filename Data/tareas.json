@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "tarea":"Cortar el Pasto",
+        "prioridad": 5
+    },
+    {
+        "id": 2,
+        "tarea":"Aprobar Web I",
+        "prioridad": 2
+    },
+    {
+        "id": 3,
+        "tarea":"Comer un asado",
+        "prioridad": 1
+    }
+
+]
