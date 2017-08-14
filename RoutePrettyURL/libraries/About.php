@@ -1,8 +1,6 @@
 <?php
+require_once 'Helpers.php';
 
-function url(){
-    return 'http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/';
-}
 
 function mostrar_about(){
 ?>
