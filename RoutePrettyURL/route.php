@@ -12,7 +12,7 @@ else{
     $partesURL = explode ("/",$_GET['action']);
     //leo la URL para entender que tengo que hacer
     if($partesURL[0] === 'sumar') {
-        sumar($partesURL[1], $partesURL[2]);
+        sumar(array($partesURL[1], $partesURL[2]));
     } elseif($partesURL[0] === 'pi') {
         number_pi();
     } elseif($partesURL[0] === 'about') {
