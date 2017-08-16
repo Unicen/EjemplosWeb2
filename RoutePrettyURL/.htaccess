@@ -13,7 +13,7 @@
 
   # Si llegamos a este punto, el acceso no se trata de contenido estatico.
   # El resto se dirigue al router principal.
-  RewriteRule ^(.*)$ route.php?action=$1 [QSA,L]
+  RewriteRule ^(.*)$ routeAvanzado.php?action=$1 [QSA,L]
   # La expesión regular captura todas las peticiones que se hacen
   # La pretición se remplaza para llamar al archivo route.php
   # Con ".*" decimos que capture todos los caracteres restantes.
