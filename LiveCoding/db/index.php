@@ -1,6 +1,14 @@
 <?php
-
 include_once 'tareas.php';
+
+function agregarTarea(){
+  $titulo = $_POST['titulo'];
+  $descripcion = $_POST['descripcion'];
+  $completada = isset($_POST['completada']) ? $_POST['completada'] : 0;
+  insertTarea($titulo, $descripcion, $completada);
+  header("Location: home");
+
+}
 
 function home()
 {
@@ -21,22 +29,28 @@ function home()
           <ul class="list-group">
 <?php
           foreach ($tareas as $tarea) {
-            echo '<li class="list-group-item">'.$tarea['titulo'].': '.$tarea['descripcion'].'</li>';
+            if ($tarea['completado']){
+              echo '<li class="list-group-item"><s>'.$tarea['titulo'].': '.$tarea['descripcion'].'</s></li>';
+            }
+            else{
+              echo '<li class="list-group-item">'.$tarea['titulo'].': '.$tarea['descripcion'].'</li>';
+            }
+
           }
 ?>
           </ul>
-          <form>
+          <form action="agregarTarea" method="post">
             <div class="form-group">
               <label for="titulo">Titulo</label>
-              <input type="text" class="form-control" id="titulo" placeholder="Titulo de la tarea">
+              <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo de la tarea">
             </div>
             <div class="form-group">
               <label for="descripcion">Descripcion</label>
-              <textarea name="descripcion" id="descripcion" rows="8" cols="50"></textarea>
+              <textarea name="descripcion" id="descripcion" name="descripcion" rows="8" cols="50"></textarea>
             </div>
             <div class="form-group">
-              <label for="completa">Completada</label>
-              <input type="checkbox" id="completa">
+              <label for="completada">Completada</label>
+              <input type="checkbox" id="completada" name="completada" value="1">
             </div>
             <button type="submit" class="btn btn-default">Crear</button>
           </form>
