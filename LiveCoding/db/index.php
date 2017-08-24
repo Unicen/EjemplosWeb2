@@ -1,13 +1,18 @@
 <?php
 include_once 'tareas.php';
+define('HOME', 'http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/');
+
+function borrarTarea($params){
+  deleteTarea($params[0]);
+  header('Location: '.HOME);
+}
 
 function agregarTarea(){
   $titulo = $_POST['titulo'];
   $descripcion = $_POST['descripcion'];
   $completada = isset($_POST['completada']) ? $_POST['completada'] : 0;
   insertTarea($titulo, $descripcion, $completada);
-  header("Location: home");
-
+  header('Location: '.HOME);
 }
 
 function home()
@@ -30,10 +35,10 @@ function home()
 <?php
           foreach ($tareas as $tarea) {
             if ($tarea['completado']){
-              echo '<li class="list-group-item"><s>'.$tarea['titulo'].': '.$tarea['descripcion'].'</s></li>';
+              echo '<li class="list-group-item"><s>'.$tarea['titulo'].': '.$tarea['descripcion'].'</s><a href="borrarTarea/'.$tarea['id_tarea'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>';
             }
             else{
-              echo '<li class="list-group-item">'.$tarea['titulo'].': '.$tarea['descripcion'].'</li>';
+              echo '<li class="list-group-item">'.$tarea['titulo'].': '.$tarea['descripcion'].'</s><a href="borrarTarea/'.$tarea['id_tarea'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>';
             }
 
           }

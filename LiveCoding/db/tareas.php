@@ -5,6 +5,13 @@ function connect(){
   , 'root', '');
 }
 
+function deleteTarea($id_tarea)
+{
+  $db = connect();
+  $sentencia = $db->prepare( "delete from tarea where id_tarea=?");
+  return $sentencia->execute([$id_tarea]);
+}
+
 function getTareas()
 {
   $db = connect();

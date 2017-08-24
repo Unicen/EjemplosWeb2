@@ -7,9 +7,8 @@ class ConfigApp
     public static $ACTIONS = [
       'home'=> 'home',
       'agregarTarea'=> 'agregarTarea',
-      'sumar'=> 'sumar',
       ''=> 'home',
-      'restar' => 'restar'
+      'borrarTarea' => 'borrarTarea'
     ];
 
 }
