@@ -2,6 +2,11 @@
 include_once 'tareas.php';
 define('HOME', 'http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/');
 
+function finalizarTarea($params){
+  markCompletedTarea($params[0]);
+  header('Location: '.HOME);
+}
+
 function borrarTarea($params){
   deleteTarea($params[0]);
   header('Location: '.HOME);
@@ -38,7 +43,7 @@ function home()
               echo '<li class="list-group-item"><s>'.$tarea['titulo'].': '.$tarea['descripcion'].'</s><a href="borrarTarea/'.$tarea['id_tarea'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>';
             }
             else{
-              echo '<li class="list-group-item">'.$tarea['titulo'].': '.$tarea['descripcion'].'</s><a href="borrarTarea/'.$tarea['id_tarea'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>';
+              echo '<li class="list-group-item">'.$tarea['titulo'].': '.$tarea['descripcion'].'</s><a href="borrarTarea/'.$tarea['id_tarea'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a><a href="finalizarTarea/'.$tarea['id_tarea'].'"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></li>';
             }
 
           }

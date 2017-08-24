@@ -8,7 +8,8 @@ class ConfigApp
       'home'=> 'home',
       'agregarTarea'=> 'agregarTarea',
       ''=> 'home',
-      'borrarTarea' => 'borrarTarea'
+      'borrarTarea' => 'borrarTarea',
+      'finalizarTarea' => 'finalizarTarea'
     ];
 
 }

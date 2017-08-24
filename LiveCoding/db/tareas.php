@@ -5,6 +5,13 @@ function connect(){
   , 'root', '');
 }
 
+function markCompletedTarea($id_tarea)
+{
+  $db = connect();
+  $sentencia = $db->prepare( "update tarea set completado=1 where id_tarea=?");
+  return $sentencia->execute([$id_tarea]);
+}
+
 function deleteTarea($id_tarea)
 {
   $db = connect();
