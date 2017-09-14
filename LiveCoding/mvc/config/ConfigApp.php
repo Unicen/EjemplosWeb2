@@ -6,7 +6,8 @@ class ConfigApp
     public static $PARAMS = 'params';
     public static $ACTIONS = [
       'home'=> 'index',
-      'agregarTarea'=> 'agregarTarea',
+      'agregarTarea'=> 'create',
+      'guardarTarea'=> 'store',
       ''=> 'index',
       'borrarTarea' => 'borrarTarea',
       'finalizarTarea' => 'finalizarTarea',
