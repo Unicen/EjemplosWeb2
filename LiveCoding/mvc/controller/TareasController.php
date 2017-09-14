@@ -40,7 +40,13 @@ class TareasController
     else{
       $this->view->errorCrear("El campo titulo es requerido", $titulo, $descripcion, $completada);
     }
+  }
 
+  public function destroy($params)
+  {
+    $id_tarea = $params[0];
+    $this->model->borrarTarea($id_tarea);
+    header('Location: '.HOME);
   }
 }
 

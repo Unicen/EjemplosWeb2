@@ -9,7 +9,7 @@ class ConfigApp
       'agregarTarea'=> 'create',
       'guardarTarea'=> 'store',
       ''=> 'index',
-      'borrarTarea' => 'borrarTarea',
+      'borrarTarea' => 'destroy',
       'finalizarTarea' => 'finalizarTarea',
       'tareas' => 'mostrarTareas',
     ];

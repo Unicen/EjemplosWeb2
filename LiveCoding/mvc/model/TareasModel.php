@@ -22,6 +22,11 @@ class TareasModel
     $sentencia->execute([$titulo,$descripcion,$completada]);
   }
 
+  function borrarTarea($id_tarea){
+    $sentencia = $this->db->prepare( "delete from tarea where id_tarea=?");
+    $sentencia->execute([$id_tarea]);
+  }
+
 }
 
  ?>
