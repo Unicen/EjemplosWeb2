@@ -32,10 +32,14 @@ class TareasController
     $titulo = $_POST['titulo'];
     $descripcion = $_POST['descripcion'];
     $completada = isset($_POST['completada']) ? $_POST['completada'] : 0;
-
     if(isset($_POST['titulo']) && !empty($_POST['titulo'])){
+      if($this->tienePalabrasProhibidas($titulo)){
+        $this->view->errorCrear("El titulo tiene palabras prohibidas", $titulo, $descripcion, $completada);
+      }
+    else{
       $this->model->guardarTarea($titulo, $descripcion, $completada);
       header('Location: '.HOME);
+    }
     }
     else{
       $this->view->errorCrear("El campo titulo es requerido", $titulo, $descripcion, $completada);
@@ -47,6 +51,15 @@ class TareasController
     $id_tarea = $params[0];
     $this->model->borrarTarea($id_tarea);
     header('Location: '.HOME);
+  }
+
+  private function tienePalabrasProhibidas($titulo){
+    $pprohibidas = ['Me gustaria', 'Quisiera', 'Web II'];
+    foreach ($pprohibidas as $palabra) {
+      if(strpos($titulo, $palabra) !== false)
+        return true;
+    }
+    return false;
   }
 }
 
