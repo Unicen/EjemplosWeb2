@@ -27,6 +27,12 @@ class TareasModel
     $sentencia->execute([$id_tarea]);
   }
 
+  function finalizarTarea($id_tarea)
+  {
+    $sentencia = $this->db->prepare( "update tarea set completado=1 where id_tarea=?");
+    $sentencia->execute([$id_tarea]);
+  }
+
 }
 
  ?>

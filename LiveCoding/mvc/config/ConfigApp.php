@@ -5,13 +5,12 @@ class ConfigApp
     public static $ACTION = 'action';
     public static $PARAMS = 'params';
     public static $ACTIONS = [
-      'home'=> 'index',
-      'agregarTarea'=> 'create',
-      'guardarTarea'=> 'store',
-      ''=> 'index',
-      'borrarTarea' => 'destroy',
-      'finalizarTarea' => 'finalizarTarea',
-      'tareas' => 'mostrarTareas',
+      ''=> 'TareasController#index',
+      'home'=> 'TareasController#index',
+      'tareas' => 'TareasController#index',
+      'agregarTarea'=> 'TareasController#create',
+      'guardarTarea'=> 'TareasController#store',
+      'borrarTarea' => 'TareasController#destroy',
     ];
 
 }
