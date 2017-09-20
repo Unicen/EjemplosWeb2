@@ -9,6 +9,8 @@ class ConfigApp
       'home'=> 'TareasController#index',
       'tareas' => 'TareasController#index',
       'palabrasProhibidas' => 'PalabrasProhibidasController#index',
+      'agregarPalabraProhibida' => 'PalabrasProhibidasController#create',
+      'guardarPalabraProhibida' => 'PalabrasProhibidasController#store',
       'agregarTarea'=> 'TareasController#create',
       'guardarTarea'=> 'TareasController#store',
       'borrarTarea' => 'TareasController#destroy',

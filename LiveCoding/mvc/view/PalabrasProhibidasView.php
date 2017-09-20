@@ -16,10 +16,9 @@ class PalabrasProhibidasView
     $this->smarty->display('templates/PalabrasProhibidas/index.tpl');
   }
 
-  // function mostrarCrearTareas(){
-  //   $this->assignarTareaForm();
-  //   $this->smarty->display('templates/formCrear.tpl');
-  // }
+  function mostrarCrearPalabraProhibida(){
+    $this->smarty->display('templates/PalabrasProhibidas/formCrear.tpl');
+  }
 }
 
  ?>

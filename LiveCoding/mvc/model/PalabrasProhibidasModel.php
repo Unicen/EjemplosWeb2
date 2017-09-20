@@ -16,7 +16,12 @@ class PalabrasProhibidasModel
     $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
-  
+
+  function guardarPalabraProhibida($palabra){
+    $sentencia = $this->db->prepare('INSERT INTO palabra_prohibida(palabra) VALUES(?)');
+    $sentencia->execute([$palabra]);
+  }
+
 }
 
  ?>

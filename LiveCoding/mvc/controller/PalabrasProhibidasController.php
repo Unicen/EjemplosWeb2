@@ -19,10 +19,17 @@ class PalabrasProhibidasController
     $this->view->mostrarPalabrasProhibidas($palabrasProhibidas);
   }
 
-  // public function create()
-  // {
-  //   $this->view->mostrarCrearTareas();
-  // }
+  public function create()
+  {
+    $this->view->mostrarCrearPalabraProhibida();
+  }
+
+  public function store()
+  {
+    $palabra = $_POST['palabra'];
+    $this->model->guardarPalabraProhibida($palabra);
+    header('Location: '.HOME.'/palabrasProhibidas');
+  }
 }
 
  ?>
