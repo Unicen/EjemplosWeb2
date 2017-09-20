@@ -3,6 +3,7 @@ define('ACTION', 0);
 define('PARAMS', 1);
 
 include_once 'controller/TareasController.php';
+include_once 'controller/PalabrasProhibidasController.php';
 include_once 'config/ConfigApp.php';
 
 function parseURL($url)

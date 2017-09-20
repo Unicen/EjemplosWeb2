@@ -8,9 +8,11 @@ class ConfigApp
       ''=> 'TareasController#index',
       'home'=> 'TareasController#index',
       'tareas' => 'TareasController#index',
+      'palabrasProhibidas' => 'PalabrasProhibidasController#index',
       'agregarTarea'=> 'TareasController#create',
       'guardarTarea'=> 'TareasController#store',
       'borrarTarea' => 'TareasController#destroy',
+      'finalizarTarea' => 'TareasController#finish',
     ];
 
 }

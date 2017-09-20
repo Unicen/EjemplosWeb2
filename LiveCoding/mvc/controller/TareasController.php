@@ -1,5 +1,6 @@
 <?php
 include_once('model/TareasModel.php');
+include_once('model/PalabrasProhibidasModel.php');
 include_once('view/TareasView.php');
 define('HOME', 'http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/');
 /**
@@ -10,10 +11,13 @@ class TareasController
   private $view;
   private $model;
 
+  private $palabrasProhibidasModel;
+
   function __construct()
   {
     $this->view = new TareasView();
     $this->model = new TareasModel();
+    $this->palabrasProhibidasModel = new PalabrasProhibidasModel();
   }
 
   public function index()
@@ -53,10 +57,17 @@ class TareasController
     header('Location: '.HOME);
   }
 
+  public function finish($params)
+  {
+    $id_tarea = $params[0];
+    $this->model->finalizarTarea($id_tarea);
+    header('Location: '.HOME);
+  }
+
   private function tienePalabrasProhibidas($titulo){
-    $pprohibidas = ['Me gustaria', 'Quisiera', 'Web II'];
+    $pprohibidas = $this->palabrasProhibidasModel->getPalabrasProhibidas();
     foreach ($pprohibidas as $palabra) {
-      if(strpos($titulo, $palabra) !== false)
+      if(strpos($titulo, $palabra['palabra']) !== false)
         return true;
     }
     return false;
