@@ -2,11 +2,8 @@
 include_once('model/PalabrasProhibidasModel.php');
 include_once('view/PalabrasProhibidasView.php');
 
-class PalabrasProhibidasController
+class PalabrasProhibidasController extends Controller
 {
-  private $view;
-  private $model;
-
   function __construct()
   {
     $this->view = new PalabrasProhibidasView();

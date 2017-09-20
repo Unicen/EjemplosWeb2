@@ -1,16 +1,6 @@
 <?php
-include_once 'libs/Smarty.class.php';
-
-class TareasView
+class TareasView extends View
 {
-  private $smarty;
-
-  function __construct()
-  {
-    $this->smarty = new Smarty();
-    $this->smarty->assign('titulo', 'MVC Tareas');
-  }
-
   function mostrarTareas($tareas){
     $this->smarty->assign('tareas', $tareas);
     $this->smarty->display('templates/index.tpl');

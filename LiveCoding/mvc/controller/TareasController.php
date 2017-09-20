@@ -2,15 +2,9 @@
 include_once('model/TareasModel.php');
 include_once('model/PalabrasProhibidasModel.php');
 include_once('view/TareasView.php');
-define('HOME', 'http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/');
-/**
- *
- */
-class TareasController
-{
-  private $view;
-  private $model;
 
+class TareasController extends Controller
+{
   private $palabrasProhibidasModel;
 
   function __construct()
