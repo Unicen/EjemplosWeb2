@@ -22,6 +22,11 @@ class PalabrasProhibidasModel
     $sentencia->execute([$palabra]);
   }
 
+  function borrarPalabraProhibida($id_palabra_prohibida){
+    $sentencia = $this->db->prepare( "delete from palabra_prohibida where id_palabra_prohibida=?");
+    $sentencia->execute([$id_palabra_prohibida]);
+  }
+
 }
 
  ?>

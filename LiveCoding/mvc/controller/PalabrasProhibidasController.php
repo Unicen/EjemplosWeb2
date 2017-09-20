@@ -30,6 +30,13 @@ class PalabrasProhibidasController
     $this->model->guardarPalabraProhibida($palabra);
     header('Location: '.HOME.'/palabrasProhibidas');
   }
+
+  public function destroy($params)
+  {
+    $id_palabra_prohibida = $params[0];
+    $this->model->borrarPalabraProhibida($id_palabra_prohibida);
+    header('Location: '.HOME.'/palabrasProhibidas');
+  }
 }
 
  ?>

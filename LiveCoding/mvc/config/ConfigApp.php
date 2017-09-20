@@ -11,6 +11,7 @@ class ConfigApp
       'palabrasProhibidas' => 'PalabrasProhibidasController#index',
       'agregarPalabraProhibida' => 'PalabrasProhibidasController#create',
       'guardarPalabraProhibida' => 'PalabrasProhibidasController#store',
+      'borrarPalabraProhibida' => 'PalabrasProhibidasController#destroy',
       'agregarTarea'=> 'TareasController#create',
       'guardarTarea'=> 'TareasController#store',
       'borrarTarea' => 'TareasController#destroy',
