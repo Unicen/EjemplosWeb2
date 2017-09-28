@@ -18,6 +18,7 @@ class ConfigApp
       'finalizarTarea' => 'TareasController#finish',
       'login' => 'LoginController#index',
       'verificarUsuario' => 'LoginController#verify',
+      'logout' => 'LoginController#destroy'
     ];
 
 }

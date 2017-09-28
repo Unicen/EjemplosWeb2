@@ -3,12 +3,13 @@ include_once('model/TareasModel.php');
 include_once('model/PalabrasProhibidasModel.php');
 include_once('view/TareasView.php');
 
-class TareasController extends Controller
+class TareasController extends SecuredController
 {
   private $palabrasProhibidasModel;
 
   function __construct()
   {
+    parent::__construct();
     $this->view = new TareasView();
     $this->model = new TareasModel();
     $this->palabrasProhibidasModel = new PalabrasProhibidasModel();

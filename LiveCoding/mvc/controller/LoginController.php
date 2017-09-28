@@ -24,12 +24,21 @@ class LoginController extends Controller
       if(!empty($userName) && !empty($password)){
         $user = $this->model->getUser($userName);
         if((!empty($user)) && password_verify($password, $user[0]['password'])) {
+            session_start();
+            $_SESSION['usuario'] = $userName;
             header('Location: '.HOME);
         }
         else{
             $this->view->mostrarLogin('Usuario o Password incorrectos');
         }
       }
+  }
+
+  public function destroy()
+  {
+    session_start();
+    session_destroy();
+    header('Location: '.LOGIN);
   }
 }
 
