@@ -8,6 +8,7 @@ include_once 'view/View.php';
 include_once 'controller/Controller.php';
 include_once 'controller/TareasController.php';
 include_once 'controller/PalabrasProhibidasController.php';
+include_once 'controller/LoginController.php';
 
 function parseURL($url)
 {

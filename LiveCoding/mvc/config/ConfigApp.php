@@ -16,6 +16,8 @@ class ConfigApp
       'guardarTarea'=> 'TareasController#store',
       'borrarTarea' => 'TareasController#destroy',
       'finalizarTarea' => 'TareasController#finish',
+      'login' => 'LoginController#index',
+      'verificarUsuario' => 'LoginController#verify',
     ];
 
 }
