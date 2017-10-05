@@ -7,6 +7,12 @@ class TareasModel extends Model
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  function getTarea($id_tarea){
+    $sentencia = $this->db->prepare( "select * from tarea where id_tarea=?");
+    $sentencia->execute([$id_tarea]);
+    return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   function guardarTarea($titulo, $descripcion, $completada){
     $sentencia = $this->db->prepare('INSERT INTO tarea(titulo,descripcion,completado) VALUES(?,?,?)');
     $sentencia->execute([$titulo,$descripcion,$completada]);
