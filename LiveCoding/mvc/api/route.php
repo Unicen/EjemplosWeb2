@@ -2,7 +2,9 @@
 define('RESOURCE', 0);
 define('PARAMS', 1);
 
+include_once '../model/Model.php';
 include_once 'config/ConfigApi.php';
+include_once 'Api.php';
 include_once 'TareasApi.php';
 
 function parseURL($url)

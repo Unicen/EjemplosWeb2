@@ -1,34 +1,25 @@
 <?php
-
-include_once '../model/Model.php';
 include_once '../model/TareasModel.php';
-class TareasAPI
+class TareasAPI extends Api
 {
-  private $model;
-
-  public function __construct(Type $foo = null)
+  public function __construct()
   {
     $this->model = new TareasModel();
   }
 
   function get($params=''){
     if(empty($params)){
-      header("Content-Type: application/json");
-      header("HTTP/1.1 200 OK");
-      return json_encode($this->model->getTareas());
+      $tareas = $this->model->getTareas();
+      return $this->response($tareas);
     }
     else{
       $tarea = $this->model->getTarea($params[0]);
       if(!empty($tarea)){
-        header("Content-Type: application/json");
-        header("HTTP/1.1 200 OK");
-        return json_encode($tarea);
+        return $this->response($tarea);
       }
       else{
-        header("Content-Type: application/json");
-        header("HTTP/1.1 404 Not Found");
         $error['error'] = "La tarea no existe";
-        return json_encode($error);
+        return $this->response($error, 404);
       }
     }
   }
