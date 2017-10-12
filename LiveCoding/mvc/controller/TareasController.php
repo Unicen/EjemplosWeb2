@@ -1,7 +1,7 @@
 <?php
-include_once('model/TareasModel.php');
-include_once('model/PalabrasProhibidasModel.php');
-include_once('view/TareasView.php');
+require_once('model/TareasModel.php');
+require_once('model/PalabrasProhibidasModel.php');
+require_once('view/TareasView.php');
 
 class TareasController extends SecuredController
 {
