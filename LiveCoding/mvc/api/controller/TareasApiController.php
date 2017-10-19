@@ -34,6 +34,30 @@ class TareasApiController extends Api
         break;
     }
   }
+
+  public function deleteTareas($params = [])
+  {
+    switch (sizeof($params)) {
+      case 0:
+        return $this->json_response(false, 400);
+        break;
+      case 1:
+        $id_tarea = $params[0];
+        $tarea = $this->model->getTarea($id_tarea);
+        if($tarea)
+        {
+          $this->model->borrarTarea($id_tarea);
+          return $this->json_response("Borrado exitoso.", 200);
+        }
+        else
+          return $this->json_response(false, 404);
+      default:
+        return $this->json_response(false, 404);
+        break;
+    }
+  }
+
+
 }
 
  ?>
