@@ -32,6 +32,13 @@ class TareasModel extends Model
     $sentencia->execute([$id_tarea]);
   }
 
+  function modificarTarea($id_tarea, $titulo, $descripcion, $completada)
+  {
+    $sentencia = $this->db->prepare( "update tarea set titulo=?, descripcion=?, completado=? where id_tarea=?");
+    $sentencia->execute([$titulo, $descripcion, $completada, $id_tarea]);
+    return $this->getTarea($id_tarea);
+  }
+
 }
 
  ?>

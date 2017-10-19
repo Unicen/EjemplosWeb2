@@ -72,6 +72,22 @@ class TareasApiController extends Api
       return $this->json_response(false, 404);
     }
   }
+
+  public function editTarea($url_params = []) {
+    if(sizeof($url_params) == 1) {
+      $body = json_decode($this->raw_data);
+      $id = $url_params[0];
+      $titulo = $body->titulo;
+      $descripcion = $body->descripcion;
+      $completada = $body->completada;
+      $tarea = $this->model->modificarTarea($id, $titulo, $descripcion, $completada);
+      return $this->json_response($tarea, 200);
+
+    }
+    else {
+      return $this->json_response(false, 404);
+    }
+  }
 }
 
  ?>
