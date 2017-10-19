@@ -17,6 +17,8 @@ class TareasModel extends Model
   function guardarTarea($titulo, $descripcion, $completada){
     $sentencia = $this->db->prepare('INSERT INTO tarea(titulo,descripcion,completado) VALUES(?,?,?)');
     $sentencia->execute([$titulo,$descripcion,$completada]);
+    $id = $this->db->lastInsertId();
+    return $this->getTarea($id);
   }
 
   function borrarTarea($id_tarea){

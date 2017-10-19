@@ -5,7 +5,8 @@ class ConfigApi
     public static $PARAMS = 'params';
     public static $RESOURCES = [
       'tareas#GET'=> 'TareasApiController#getTareas',
-      'tareas#DELETE'=> 'TareasApiController#deleteTareas'
+      'tareas#DELETE'=> 'TareasApiController#deleteTareas',
+      'tareas#POST'=> 'TareasApiController#createTareas'
     ];
 }
 ?>

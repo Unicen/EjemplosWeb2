@@ -20,12 +20,12 @@ if(isset($_GET['resource'])){
    $urlData = parseURL($_GET['resource']);
     $resource = $urlData[ConfigApi::$RESOURCE];
     if(array_key_exists($resource,ConfigApi::$RESOURCES)){
-        $params = $urlData[ConfigApi::$PARAMS];
+        $url_params = $urlData[ConfigApi::$PARAMS];
         $controller_method = explode('#',ConfigApi::$RESOURCES[$resource]); //Array[0] -> TareasController [1] -> index
         $controller =  new $controller_method[0]();
         $metodo = $controller_method[1];
-        if(isset($params) &&  $params != null){
-            echo $controller->$metodo($params);
+        if(isset($url_params) &&  $url_params != null){
+            echo $controller->$metodo($url_params);
         }
         else{
             echo $controller->$metodo();

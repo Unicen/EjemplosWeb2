@@ -11,19 +11,20 @@ class TareasApiController extends Api
 
   function __construct()
   {
+      parent::__construct();
       $this->model = new TareasModel();
 //      $this->palabrasProhibidasModel = new PalabrasProhibidasModel();
   }
 
-  public function getTareas($params = [])
+  public function getTareas($url_params = [])
   {
-    switch (sizeof($params)) {
+    switch (sizeof($url_params)) {
       case 0:
         $tareas = $this->model->getTareas();
         return $this->json_response($tareas, 200);
         break;
       case 1:
-        $id_tarea = $params[0];
+        $id_tarea = $url_params[0];
         $tarea = $this->model->getTarea($id_tarea);
         if($tarea)
           return $this->json_response($tarea, 200);
@@ -35,14 +36,14 @@ class TareasApiController extends Api
     }
   }
 
-  public function deleteTareas($params = [])
+  public function deleteTareas($url_params = [])
   {
-    switch (sizeof($params)) {
+    switch (sizeof($url_params)) {
       case 0:
         return $this->json_response(false, 400);
         break;
       case 1:
-        $id_tarea = $params[0];
+        $id_tarea = $url_params[0];
         $tarea = $this->model->getTarea($id_tarea);
         if($tarea)
         {
@@ -57,7 +58,20 @@ class TareasApiController extends Api
     }
   }
 
+  public function createTareas($url_params = []) {
+    if(sizeof($url_params) == 0) {
+      $body = json_decode($this->raw_data);
+      $titulo = $body->titulo;
+      $descripcion = $body->descripcion;
+      $completada = $body->completada;
+      $tarea = $this->model->guardarTarea($titulo, $descripcion, $completada);
+      return $this->json_response($tarea, 200);
 
+    }
+    else {
+      return $this->json_response(false, 404);
+    }
+  }
 }
 
  ?>
