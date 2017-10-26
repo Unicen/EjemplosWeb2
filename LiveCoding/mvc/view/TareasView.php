@@ -1,8 +1,7 @@
 <?php
 class TareasView extends View
 {
-  function mostrarTareas($tareas){
-    $this->smarty->assign('tareas', $tareas);
+  function mostrarIndex(){
     $this->smarty->display('templates/index.tpl');
   }
 

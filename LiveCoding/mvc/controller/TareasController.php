@@ -17,8 +17,7 @@ class TareasController extends SecuredController
 
   public function index()
   {
-    $tareas = $this->model->getTareas();
-    $this->view->mostrarTareas($tareas);
+    $this->view->mostrarIndex();
   }
 
   public function create()
