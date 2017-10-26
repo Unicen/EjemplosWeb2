@@ -1,4 +1,4 @@
-<ul class="list-group">
+<ul class="list-group" id="listaTareas">
   {foreach from=$tareas item=tarea}
       <li class="list-group-item">
         {if $tarea['completado'] }

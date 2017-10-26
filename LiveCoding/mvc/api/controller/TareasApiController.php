@@ -13,13 +13,17 @@ class TareasApiController extends Api
   {
       parent::__construct();
       $this->model = new TareasModel();
-//      $this->palabrasProhibidasModel = new PalabrasProhibidasModel();
   }
 
   public function getTareas($url_params = [])
   {
       $tareas = $this->model->getTareas();
-      return $this->json_response($tareas, 200);
+      $tareas_editadas = [];
+      foreach ($tareas as $tarea) {
+        $tarea['completado'] = $tarea['completado'] ? true : false;
+        array_push($tareas_editadas, $tarea);
+      }
+      return $this->json_response($tareas_editadas, 200);
   }
 
   public function getTarea($url_params = [])
