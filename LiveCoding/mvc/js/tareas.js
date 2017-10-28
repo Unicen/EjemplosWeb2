@@ -36,6 +36,19 @@ $(document).ready(function(){
         });
     }
 
+    function borrarTarea(idTarea) {
+      $.ajax({
+            method: "DELETE",
+            url: "api/tareas/" + idTarea
+          })
+        .done(function() {
+           $('#tarea'+idTarea).remove();
+        })
+        .fail(function() {
+            alert('Imposible borrar la tarea');
+        });
+    }
+
   $('#refresh').click(function(event){
       event.preventDefault();
       cargarTareas();
@@ -46,6 +59,11 @@ $(document).ready(function(){
       crearTarea();
   });
 
+  $('body').on('click', 'a.js-borrar', function() {
+      event.preventDefault();
+      let idTarea = $(this).data('idtarea');
+      borrarTarea(idTarea);
+  });
 
   cargarTareas();
 });
