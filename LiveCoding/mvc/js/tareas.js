@@ -49,6 +49,20 @@ $(document).ready(function(){
         });
     }
 
+    function completarTarea(idTarea) {
+      $.ajax({
+            method: "PUT",
+            url: "api/tareas/" + idTarea + "/finalizar"
+          })
+        .done(function() {
+           cargarTareas();
+        })
+        .fail(function(data) {
+            console.log(data);
+            alert('Imposible finalizar la tarea');
+        });
+    }
+
   $('#refresh').click(function(event){
       event.preventDefault();
       cargarTareas();
@@ -63,6 +77,12 @@ $(document).ready(function(){
       event.preventDefault();
       let idTarea = $(this).data('idtarea');
       borrarTarea(idTarea);
+  });
+
+  $('body').on('click', 'a.js-completada', function() {
+      event.preventDefault();
+      let idTarea = $(this).data('idtarea');
+      completarTarea(idTarea);
   });
 
   cargarTareas();

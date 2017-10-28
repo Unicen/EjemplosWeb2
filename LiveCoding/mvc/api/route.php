@@ -16,6 +16,7 @@ $router->AddRoute("tareas/:id/descripcion", "GET", "TareasApiController", "getDe
 $router->AddRoute("tareas/:id", "PUT", "TareasApiController", "editTarea");
 $router->AddRoute("tareas", "POST", "TareasApiController", "createTareas");
 $router->AddRoute("tareas/:id", "DELETE", "TareasApiController", "deleteTareas");
+$router->AddRoute("tareas/:id/finalizar", "PUT", "TareasApiController", "updateCompletado");
 
 $route = $_GET['resource'];
 $array = $router->Route($route);

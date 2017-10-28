@@ -86,6 +86,12 @@ class TareasApiController extends Api
     $tarea = $this->model->modificarTarea($id, $titulo, $descripcion, $completada);
     return $this->json_response($tarea, 200);
   }
+
+  public function updateCompletado($url_params = []) {
+    $id = $url_params[":id"];
+    $this->model->finalizarTarea($id);
+    return $this->json_response("Finalizado exitoso.", 200);
+  }
 }
 
  ?>
