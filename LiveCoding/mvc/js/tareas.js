@@ -14,10 +14,38 @@ $(document).ready(function(){
             });
     }
 
+  function crearTarea() {
+      let tarea ={
+        "titulo": $('#titulo').val(),
+        "descripcion": $('#descripcion').val(),
+        "completada": $('#completada')[0].checked ? "1" : "0"
+      };
+
+      $.ajax({
+            method: "POST",
+            url: "api/tareas",
+            data: JSON.stringify(tarea)
+          })
+        .done(function(data) {
+          let rendered = Mustache.render(templateTarea , data);
+          $('#listaTareas').append(rendered);
+        })
+        .fail(function(data) {
+            console.log(data);
+            alert('Imposible crear la tarea');
+        });
+    }
+
   $('#refresh').click(function(event){
       event.preventDefault();
       cargarTareas();
   });
+
+  $('#btnCrearTarea').click(function(event){
+      event.preventDefault();
+      crearTarea();
+  });
+
 
   cargarTareas();
 });

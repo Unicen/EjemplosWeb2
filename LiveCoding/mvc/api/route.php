@@ -14,7 +14,7 @@ $router->AddRoute("tareas", "GET", "TareasApiController", "getTareas");
 $router->AddRoute("tareas/:id", "GET", "TareasApiController", "getTarea");
 $router->AddRoute("tareas/:id/descripcion", "GET", "TareasApiController", "getDescripcion");
 $router->AddRoute("tareas/:id", "PUT", "TareasApiController", "editTarea");
-$router->AddRoute("tareas/:id", "POST", "TareasApiController", "createTareas");
+$router->AddRoute("tareas", "POST", "TareasApiController", "createTareas");
 $router->AddRoute("tareas/:id", "DELETE", "TareasApiController", "deleteTareas");
 
 $route = $_GET['resource'];

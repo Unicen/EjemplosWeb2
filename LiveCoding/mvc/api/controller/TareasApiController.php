@@ -70,7 +70,11 @@ class TareasApiController extends Api
     $descripcion = $body->descripcion;
     $completada = $body->completada;
     $tarea = $this->model->guardarTarea($titulo, $descripcion, $completada);
-    return $this->json_response($tarea, 200);
+    $tarea['completado'] = $tarea['completado'] ? true : false;
+    $response = new stdClass();
+    $response->tareas = [$tarea];
+    $response->status = 200;
+    return $this->json_response($response, 200);
   }
 
   public function editTarea($url_params = []) {
