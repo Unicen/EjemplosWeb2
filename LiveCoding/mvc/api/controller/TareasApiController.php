@@ -19,7 +19,16 @@ class TareasApiController extends Api
   public function getTareas($url_params = [])
   {
       $tareas = $this->model->getTareas();
-      return $this->json_response($tareas, 200);
+      $tareas_editadas = [];
+      foreach ($tareas as $tarea) {
+        $tarea['completado'] =  $tarea['completado'] ? true : false;
+        array_push($tareas_editadas,$tarea);
+      }
+
+      $response = new stdClass();
+      $response->tareas = $tareas_editadas;
+      $response->status = 200;
+      return $this->json_response($response, 200);
   }
 
   public function getTarea($url_params = [])

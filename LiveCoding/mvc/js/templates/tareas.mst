@@ -1,0 +1,9 @@
+{{#tareas}}
+<li id="tarea{{id_tarea}}"class="list-group-item">
+  {{#completado}}<s>{{/completado}}
+    {{titulo}}
+  {{#completado}}</s>{{/completado}}
+  <a href="borrarTarea/{{id_tarea}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+  <a href="finalizarTarea/{{id_tarea}}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+</li>
+{{/tareas}}
