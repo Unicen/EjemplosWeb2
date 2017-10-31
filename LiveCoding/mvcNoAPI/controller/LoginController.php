@@ -1,5 +1,5 @@
 <?php
-include_once('model/LoginModel.php');
+include_once('model/UsuariosModel.php');
 include_once('view/LoginView.php');
 
 class LoginController extends Controller
@@ -8,7 +8,7 @@ class LoginController extends Controller
   function __construct()
   {
     $this->view = new LoginView();
-    $this->model = new LoginModel();
+    $this->model = new UsuariosModel();
   }
 
   public function index()

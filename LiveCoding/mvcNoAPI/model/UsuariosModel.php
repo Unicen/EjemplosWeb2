@@ -1,5 +1,5 @@
 <?php
-class LoginModel extends Model
+class UsuariosModel extends Model
 {
   function getUser($userName){
     $sentencia = $this->db->prepare( "select * from usuario where usuario = ? limit 1");
