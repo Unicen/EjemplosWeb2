@@ -28,6 +28,8 @@ class TareasController extends SecuredController
 
   public function store()
   {
+    // $nombreImagen = $_FILES['imagen']['name'];
+    $rutaTempImagen = $_FILES['imagen']['tmp_name'];
     $titulo = $_POST['titulo'];
     $descripcion = $_POST['descripcion'];
     $completada = isset($_POST['completada']) ? $_POST['completada'] : 0;
@@ -36,8 +38,13 @@ class TareasController extends SecuredController
         $this->view->errorCrear("El titulo tiene palabras prohibidas", $titulo, $descripcion, $completada);
       }
     else{
-      $this->model->guardarTarea($titulo, $descripcion, $completada);
-      header('Location: '.HOME);
+      if($_FILES['imagen']['type'] == 'image/jpeg') {
+        $this->model->guardarTarea($titulo, $descripcion, $completada, $rutaTempImagen);
+        header('Location: '.HOME);
+      }
+      else{
+        $this->view->errorCrear("La imagen tiene que ser JPG.", $titulo, $descripcion, $completada);
+      }
     }
     }
     else{

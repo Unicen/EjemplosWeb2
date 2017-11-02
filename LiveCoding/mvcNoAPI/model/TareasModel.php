@@ -7,9 +7,11 @@ class TareasModel extends Model
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function guardarTarea($titulo, $descripcion, $completada){
-    $sentencia = $this->db->prepare('INSERT INTO tarea(titulo,descripcion,completado) VALUES(?,?,?)');
-    $sentencia->execute([$titulo,$descripcion,$completada]);
+  function guardarTarea($titulo, $descripcion, $completada, $imagen){
+    $destino_final = 'images/' . uniqid() . '.jpg';
+    move_uploaded_file($imagen, $destino_final);
+    $sentencia = $this->db->prepare('INSERT INTO tarea(titulo,descripcion,completado,imagen) VALUES(?,?,?,?)');
+    $sentencia->execute([$titulo,$descripcion,$completada,$destino_final]);
   }
 
   function borrarTarea($id_tarea){
