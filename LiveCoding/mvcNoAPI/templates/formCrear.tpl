@@ -15,7 +15,7 @@
       </div>
       <div class="form-group">
         <label for="imagen">Imagen</label>
-        <input type="file" id="imagen" name="imagen">
+        <input type="file" id="imagenes" name="imagenes[]" multiple>
       </div>
       <div class="form-group">
         <label for="completada">Completada</label>

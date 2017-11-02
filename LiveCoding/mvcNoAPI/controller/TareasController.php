@@ -26,10 +26,18 @@ class TareasController extends SecuredController
     $this->view->mostrarCrearTareas();
   }
 
+  private function sonJPG($imagenesTipos){
+      foreach ($imagenesTipos as $tipo) {
+        if($tipo != 'image/jpeg') {
+          return false;
+        }
+      }
+      return true;
+  }
+
   public function store()
   {
-    // $nombreImagen = $_FILES['imagen']['name'];
-    $rutaTempImagen = $_FILES['imagen']['tmp_name'];
+    $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
     $titulo = $_POST['titulo'];
     $descripcion = $_POST['descripcion'];
     $completada = isset($_POST['completada']) ? $_POST['completada'] : 0;
@@ -38,12 +46,12 @@ class TareasController extends SecuredController
         $this->view->errorCrear("El titulo tiene palabras prohibidas", $titulo, $descripcion, $completada);
       }
     else{
-      if($_FILES['imagen']['type'] == 'image/jpeg') {
-        $this->model->guardarTarea($titulo, $descripcion, $completada, $rutaTempImagen);
+      if($this->sonJPG($_FILES['imagenes']['type'])) {
+        $this->model->guardarTarea($titulo, $descripcion, $completada, $rutaTempImagenes);
         header('Location: '.HOME);
       }
       else{
-        $this->view->errorCrear("La imagen tiene que ser JPG.", $titulo, $descripcion, $completada);
+        $this->view->errorCrear("Las imagenes tienen que ser JPG.", $titulo, $descripcion, $completada);
       }
     }
     }

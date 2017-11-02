@@ -6,7 +6,9 @@
         {else}
             {$tarea['titulo']} : {$tarea['descripcion']}
         {/if}
-        <img src="{$tarea['imagen']}" alt="Imagen de la tarea {$tarea['titulo']}">
+        {foreach from=$tarea['imagenes'] item=imagen}
+          <img src="{$imagen['ruta']}" alt="Imagen de la tarea {$tarea['titulo']}">
+        {/foreach}
         <a href="borrarTarea/{$tarea['id_tarea']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
         <a href="finalizarTarea/{$tarea['id_tarea']}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
     </li>
